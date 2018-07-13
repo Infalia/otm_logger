@@ -1,0 +1,51 @@
+{
+    "mappings":
+    [
+        {
+            "app_concept": "Issue",
+            "ontomap_concept": "Issue",
+            "properties": 
+            [
+                {
+                    "app_property": "id",
+                    "ontomap_property": "hasID"
+                },
+                {
+                    "app_property": "title",
+                    "ontomap_property": "hasName"
+                },
+                {
+                    "app_property": "description",
+                    "ontomap_property": "hasDescription"
+                },
+                {
+                    "app_property": "address",
+                    "ontomap_property": "hasAddress"
+                },
+                {
+                    "app_property": "category",
+                    "ontomap_property": "hasCategoryName"
+                },
+                {
+                    "app_property": "state",
+                    "ontomap_property": "hasIssueState"
+                }
+            ]
+        },
+        {
+            "app_concept": "Comment",
+            "ontomap_concept": "Comment",
+            "properties": 
+            [
+                {
+                    "app_property": "id",
+                    "ontomap_property": "hasID"
+                },
+                {
+                    "app_property": "body",
+                    "ontomap_property": "hasDescription"
+                }
+            ]
+        }
+    ]
+}
