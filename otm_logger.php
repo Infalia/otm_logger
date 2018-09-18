@@ -42,7 +42,8 @@ class plgImcotm_logger extends JPlugin
 							'state' => $step['stepid_title'],
 							'external_url' => $protocol.'://'.$host.'/issue/'.($id == null ? $validData['id'] : $id),
 							'additionalProperties' => array(
-								'images' => $issuePhotos['files']
+								'images' => $issuePhotos['files'],
+								'moderation' => $validData['moderation']
 							)
 						)
 					)
@@ -92,7 +93,8 @@ class plgImcotm_logger extends JPlugin
 							'state' => $step['stepid_title'],
 							'external_url' => $protocol.'://'.$host.'/issue/'.($id == null ? $validData['id'] : $id),
 							'additionalProperties' => array(
-								'images' => $issuePhotos['files']
+								'images' => $issuePhotos['files'],
+								'moderation' => $validData['moderation']
 							)
 						)
 					)
@@ -104,51 +106,59 @@ class plgImcotm_logger extends JPlugin
 
 		$eventListJson = json_encode($eventList);
 		$result = $this->postOTMEvent($eventListJson);
+	}
+
+	public function onAfterModerationModified($model, $validData, $id = null)
+	{
+		$details = $this->getDetails($id, $model);
+		$issuePhotos = json_decode($validData['photo'], true);
+
+		$uri = new JUri(JUri::base());
+		$host = $uri->getHost();
+		$protocol = $uri->getScheme();
+
+
+		$step = ImcFrontendHelper::getStepByStepId($validData['stepid']);
+		$catTitle = ImcFrontendHelper::getCategoryNameByCategoryId($validData['catid']);
+
+
+		// OnToMap request
+		$eventList = array('event_list' => array(
+			0 => array(
+				'actor' => (int) $details->sloginid,
+				'timestamp' => round(microtime(true) * 1000),
+				'activity_type' => 'object_updated',
+				'activity_objects' => array(
+					0 => array(
+						'type' => 'Feature',
+						'geometry' => array(
+							'type' => 'Point',
+							'coordinates' => array(floatval($validData['longitude']), floatval($validData['latitude']))
+						),
+						'properties' => array(
+							'id' => (int) ($id == null ? $validData['id'] : $id),
+							'hasType' => 'Issue',
+							'title' => $validData['title'],
+							'description' => $validData['description'],
+							'category' => $catTitle,
+							'address' => $validData['address'],
+							'state' => $step['stepid_title'],
+							'external_url' => $protocol.'://'.$host.'/issue/'.($id == null ? $validData['id'] : $id),
+							'additionalProperties' => array(
+								'images' => $issuePhotos['files'],
+								'moderation' => $validData['moderation']
+							)
+						)
+					)
+				)
+			)
+		));
 
 
 
-
-
-		// $params = array('actor' => $details->userid, 'prettyprint' => 'true');
-		// $result = $this->getOTMEvents($params);
-
-		// $result = $this->getOTMMappings();
-
-		// $mappingsJson = file_get_contents(dirname(__FILE__).'/otm-mapping.json');
-		// //$mappings = json_decode($mappingsJson, true);
-		// $result = $this->postOTMMappings($mappingsJson);
-
-
-		
-		// echo '<pre>';
-		// print_r($step);
-		// echo '</pre>';
-
-
-		// echo '<pre>';
-		// print_r($catTitle);
-		// echo '</pre>';
-
-
-		// echo '<pre>';
-		// print_r($validData);
-		// echo '</pre>';
-
-
-		// echo '<pre>';
-		// print_r($mappings);
-		// echo '</pre>';
-
-
-		// echo '<pre>';
-		// print_r($issuePhotos);
-		// echo '</pre>';
-
-
-		// echo '<pre>';
-		// print_r($result);
-		// echo '</pre>';
-	}	
+		$eventListJson = json_encode($eventList);
+		$result = $this->postOTMEvent($eventListJson);
+	}
 
 	public function onAfterStepModified($model, $validData, $id = null)
 	{
@@ -187,7 +197,8 @@ class plgImcotm_logger extends JPlugin
 							'state' => $step['stepid_title'],
 							'external_url' => $protocol.'://'.$host.'/issue/'.($id == null ? $validData['id'] : $id),
 							'additionalProperties' => array(
-								'images' => $issuePhotos['files']
+								'images' => $issuePhotos['files'],
+								'moderation' => $validData['moderation']
 							)
 						)
 					)
