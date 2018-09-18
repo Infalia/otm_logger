@@ -18,6 +18,12 @@ class plgImcotm_logger extends JPlugin
 		$step = ImcFrontendHelper::getStepByStepId($validData['stepid']);
 		$catTitle = ImcFrontendHelper::getCategoryNameByCategoryId($validData['catid']);
 
+		$moderation = false;
+
+		if(1 == $validData['moderation']) {
+			$moderation = true;
+		}
+
 
 		// OnToMap request
 		$eventList = array('event_list' => array(
@@ -43,7 +49,7 @@ class plgImcotm_logger extends JPlugin
 							'external_url' => $protocol.'://'.$host.'/issue/'.($id == null ? $validData['id'] : $id),
 							'additionalProperties' => array(
 								'images' => $issuePhotos['files'],
-								'moderation' => $validData['moderation']
+								'moderation' => $moderation
 							)
 						)
 					)
@@ -68,6 +74,12 @@ class plgImcotm_logger extends JPlugin
 
 		$step = ImcFrontendHelper::getStepByStepId($validData['stepid']);
 		$catTitle = ImcFrontendHelper::getCategoryNameByCategoryId($validData['catid']);
+
+		$moderation = false;
+
+		if(1 == $validData['moderation']) {
+			$moderation = true;
+		}
 
 
 		// OnToMap request
@@ -94,7 +106,7 @@ class plgImcotm_logger extends JPlugin
 							'external_url' => $protocol.'://'.$host.'/issue/'.($id == null ? $validData['id'] : $id),
 							'additionalProperties' => array(
 								'images' => $issuePhotos['files'],
-								'moderation' => $validData['moderation']
+								'moderation' => $moderation
 							)
 						)
 					)
@@ -121,6 +133,12 @@ class plgImcotm_logger extends JPlugin
 		$step = ImcFrontendHelper::getStepByStepId($validData['stepid']);
 		$catTitle = ImcFrontendHelper::getCategoryNameByCategoryId($validData['catid']);
 
+		$moderation = false;
+
+		if(1 == $validData['moderation']) {
+			$moderation = true;
+		}
+
 
 		// OnToMap request
 		$eventList = array('event_list' => array(
@@ -146,7 +164,7 @@ class plgImcotm_logger extends JPlugin
 							'external_url' => $protocol.'://'.$host.'/issue/'.($id == null ? $validData['id'] : $id),
 							'additionalProperties' => array(
 								'images' => $issuePhotos['files'],
-								'moderation' => $validData['moderation']
+								'moderation' => $moderation
 							)
 						)
 					)
@@ -173,6 +191,12 @@ class plgImcotm_logger extends JPlugin
 		$step = ImcFrontendHelper::getStepByStepId($validData['stepid']);
 		$catTitle = ImcFrontendHelper::getCategoryNameByCategoryId($validData['catid']);
 
+		$moderation = false;
+
+		if(1 == $validData['moderation']) {
+			$moderation = true;
+		}
+
 
 		// OnToMap request
 		$eventList = array('event_list' => array(
@@ -198,7 +222,7 @@ class plgImcotm_logger extends JPlugin
 							'external_url' => $protocol.'://'.$host.'/issue/'.($id == null ? $validData['id'] : $id),
 							'additionalProperties' => array(
 								'images' => $issuePhotos['files'],
-								'moderation' => $validData['moderation']
+								'moderation' => $moderation
 							)
 						)
 					)
