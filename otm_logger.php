@@ -18,11 +18,19 @@ class plgImcotm_logger extends JPlugin
 		$step = ImcFrontendHelper::getStepByStepId($validData['stepid']);
 		$catTitle = ImcFrontendHelper::getCategoryNameByCategoryId($validData['catid']);
 
-		$moderation = false;
 
-		if(1 == $validData['moderation']) {
+		$moderation = false;
+		$params = JComponentHelper::getParams('com_imc');
+		$moderationParam = $params->get('newissueneedsmoderation');
+		
+		if(1 == $moderationParam) {
 			$moderation = true;
 		}
+		
+// 		echo '<pre>';
+// 		print_r($validData);
+// 		echo '</pre>';
+// 		die;
 
 
 		// OnToMap request
