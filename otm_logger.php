@@ -33,7 +33,7 @@ class plgImcotm_logger extends JPlugin
 // 		die;
 
 
-		// OnToMap request
+		// OnToMap plain request
 		$eventList = array('event_list' => array(
 			0 => array(
 				'actor' => (int) $details->sloginid,
@@ -64,6 +64,49 @@ class plgImcotm_logger extends JPlugin
 				)
 			)
 		));
+
+		if( isset($validData['belongs_to']) && !empty($validData['belongs_to']) )
+		{
+			// OnToMap advanced request including BELONGS_TO
+			$eventList = array('event_list' => array(
+				0 => array(
+					'actor' => (int) $details->sloginid,
+					'timestamp' => round(microtime(true) * 1000),
+					'activity_type' => 'object_created',
+					'activity_objects' => array(
+						0 => array(
+							'type' => 'Feature',
+							'geometry' => array(
+								'type' => 'Point',
+								'coordinates' => array(floatval($validData['longitude']), floatval($validData['latitude']))
+							),
+							'properties' => array(
+								'id' => (int) ($id == null ? $validData['id'] : $id),
+								'hasType' => 'Issue',
+								'title' => $validData['title'],
+								'description' => $validData['description'],
+								'category' => $catTitle,
+								'address' => $validData['address'],
+								'state' => $step['stepid_title'],
+								'external_url' => $protocol.'://'.$host.'/issue/'.($id == null ? $validData['id'] : $id),
+								'additionalProperties' => array(
+									'images' => $issuePhotos['files'],
+									'moderation' => $moderation
+								)
+							)
+						)
+					),
+					'references' => array(
+						0 => array(
+							'application' => 'wegovnow.firstlife.org',
+							'external_url' => $validData['belongs_to'],
+							'type' => 'BELONGS_TO'
+						)
+					)
+				)
+			));
+		}
+
 
 
 		$eventListJson = json_encode($eventList);
