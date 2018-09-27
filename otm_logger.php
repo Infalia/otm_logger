@@ -290,20 +290,9 @@ class plgImcotm_logger extends JPlugin
 			$eventList['event_list'][0]['references'][1]['external_url'] = $protocol.'://'.$host.'/comment/'.$validData['comment_parent_id'];
 		}
 
-
-		echo '<pre>';
-		print_r($eventList);
-		echo '</pre>';
-
-
 		$eventListJson = json_encode($eventList);
 		$result = $this->postOTMEvent($eventListJson);
 
-		echo '<pre>';
-		print_r($result);
-		echo '</pre>';
-
-		die;
 	}
 
 	private function getDetails($id, $model) 
