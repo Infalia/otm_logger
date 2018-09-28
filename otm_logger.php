@@ -61,7 +61,13 @@ class plgImcotm_logger extends JPlugin
 							)
 						)
 					)
-				)
+				),
+				'visibility_details' => array(
+					0 => array(
+						'external_url' => $protocol.'://'.$host.'/issue/'.($id == null ? $validData['id'] : $id),
+						'hidden' => $moderation
+					)
+				)					
 			)
 		));
 
@@ -96,6 +102,12 @@ class plgImcotm_logger extends JPlugin
 							)
 						)
 					),
+					'visibility_details' => array(
+						0 => array(
+							'external_url' => $protocol.'://'.$host.'/issue/'.($id == null ? $validData['id'] : $id),
+							'hidden' => $moderation
+						)
+					),						
 					'references' => array(
 						0 => array(
 							'application' => $this->params->get('application'),
@@ -161,7 +173,13 @@ class plgImcotm_logger extends JPlugin
 							)
 						)
 					)
-				)
+				),
+				'visibility_details' => array(
+					0 => array(
+						'external_url' => $protocol.'://'.$host.'/issue/'.($id == null ? $validData['id'] : $id),
+						'hidden' => $moderation
+					)
+				)					
 			)
 		));
 
@@ -219,7 +237,13 @@ class plgImcotm_logger extends JPlugin
 							)
 						)
 					)
-				)
+				),
+				'visibility_details' => array(
+					0 => array(
+						'external_url' => $protocol.'://'.$host.'/issue/'.($id == null ? $validData['id'] : $id),
+						'hidden' => $moderation
+					)
+				)				
 			)
 		));
 
@@ -277,7 +301,13 @@ class plgImcotm_logger extends JPlugin
 							)
 						)
 					)
-				)
+				),
+				'visibility_details' => array(
+					0 => array(
+						'external_url' => $protocol.'://'.$host.'/issue/'.($id == null ? $validData['id'] : $id),
+						'hidden' => $moderation
+					)
+				)					
 			)
 		));
 
@@ -318,6 +348,12 @@ class plgImcotm_logger extends JPlugin
 						)
 					)
 				),
+				'visibility_details' => array(
+					0 => array(
+						'external_url' => $protocol.'://'.$host.'/issue/'.($id == null ? $validData['id'] : $id),
+						'hidden' => $moderation
+					)
+				),					
 				'references' => array(
 					0 => array(
 						'application' => $protocol.'://'.$host,
