@@ -98,7 +98,7 @@ class plgImcotm_logger extends JPlugin
 					),
 					'references' => array(
 						0 => array(
-							'application' => 'wegovnow.firstlife.org',
+							'application' => $this->params->get('application'),
 							'external_url' => $validData['belongs_to'],
 							'type' => 'BELONGS_TO'
 						)

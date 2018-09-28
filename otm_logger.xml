@@ -37,6 +37,8 @@
                 <field type="text" name="eventsurl" label="PLG_IMC_OTM_LOGGER_SETTINGS_EVENTS_URL_LABEL" description="PLG_IMC_OTM_LOGGER_SETTINGS_EVENTS_URL_DESC" />
                 <field type="text" name="mappingsurl" label="PLG_IMC_OTM_LOGGER_SETTINGS_MAPPINGS_URL_LABEL" description="PLG_IMC_OTM_LOGGER_SETTINGS_MAPPINGS_URL_DESC" />
                 <field type="text" name="certpath" label="PLG_IMC_OTM_LOGGER_SETTINGS_CERT_PATH_LABEL" description="PLG_IMC_OTM_LOGGER_SETTINGS_CERT_PATH_DESC" />
+                <field type="text" name="application" label="PLG_IMC_OTM_LOGGER_SETTINGS_APPLICATION_LABEL" description="PLG_IMC_OTM_LOGGER_SETTINGS_APPLICATION_DESC" default="wegovnow.firstlife.org"/>
+                
             </fieldset>
 
         </fields>
