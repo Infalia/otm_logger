@@ -1,29 +1,5 @@
-# README #
+# WeGovNow OnToMap Logger - Joomla plugin #
 
-This README would normally document whatever steps are necessary to get your application up and running.
+This is the Joomla plugin which is implemented to allow any Joomla application to communicate with the WeGovNow OnToMap Logger.
 
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+It follows the “Dispatcher / Observer” design pattern in order to be able to “listen” specific events that are triggered by core application components (e.g. ImproveMyCity) and proceed with certain actions such as sending to the mapped concepts in the WeGovNow Ontology the corresponding metadata.
